@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#set -e
+
+function log() {
+    echo "[entrypoint] $@"
+}
+
+log "Executing sshd"
+#exec /bin/ls -alh /etc/ssh/ &
+/etc/init.d/nslcd start
+exec /usr/sbin/sshd -D -e -E /var/log/auth.log
